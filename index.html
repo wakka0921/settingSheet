@@ -55,8 +55,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb1" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option>
         </select>
         <input type="checkbox" id="vocal" checked>ボーカル
@@ -79,8 +79,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb2" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option> 
         </select>
         <input type="checkbox" id="vocal2" checked>ボーカル
@@ -102,8 +102,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb3" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option>
         </select>
         <input type="checkbox" id="vocal3" checked>ボーカル
@@ -126,8 +126,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb4" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option>
         </select>
         <input type="checkbox" id="vocal4" checked>ボーカル
@@ -150,8 +150,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb5" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option>
         </select>
         <input type="checkbox" id="vocal5" checked>ボーカル
@@ -174,8 +174,8 @@
             <option value="other">その他</option>
         </select>
         <select id="bMemberTamb6" style="display: none;">
-            <option value="10inchtamb">10インチタム</option>
-            <option value="12inchtamb">12インチタム</option>
+            <option value="10inchtamb">10インチタム残し</option>
+            <option value="12inchtamb">12インチタム残し</option>
             <option value="2tambs">2タム</option>
         </select>
         <input type="checkbox" id="vocal6" checked>ボーカル
@@ -380,10 +380,7 @@ document.getElementById('exportBtn').addEventListener('click', async function ()
         alert("フリガナは必須項目です。");
         return false;
     }
-    if (document.getElementById("bJanru").value === "") {   
-        alert("ジャンルは必須項目です。");
-        return false;
-    }
+
     if(document.getElementById("bMemberDtl1").value ==="" || document.getElementById("bMemberDtl2").value ==="" || document.getElementById("bMemberDtl3").value ===""){
         alert("３人まで必ず入力してください。");
         return false;
