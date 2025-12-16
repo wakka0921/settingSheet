@@ -147,7 +147,26 @@ button:active {
 }
     box-shadow: none;
 }
+/*レスポンシブ対応：各種入力項目を画面幅に合わせて調整*/
+/*スマホ表示時にフォーム幅を90%に調整、ラベルと入力欄を縦並び、ピンチインアウト不可にして、ズーム不可に*/
+@media (max-width: 640px) {
+    #form_container {
+        width: 90%;
+        padding: 10px;
+    }
+    label {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+    input[type="text"], select {
+        width: 100%;
+    }
+}
 
+html, body {
+  /* ズームやダブルタップによる拡大を禁止 */
+  touch-action: pan-x pan-y;
+}
 
 
 
