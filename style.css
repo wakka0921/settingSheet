@@ -131,3 +131,23 @@ button:active {
     resize: none;
 }
 
+/*スマホ対応*/
+@media (max-width: 640px) {
+    #form_container {
+        width: 90%;
+        padding: 10px;
+    }
+    label {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+    input[type="text"], select {
+        width: 100%;
+    }
+}
+    box-shadow: none;
+}
+
+
+
+
