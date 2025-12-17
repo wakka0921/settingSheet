@@ -1,23 +1,4 @@
-/*背景は無地、全体の要素を左に揃える*/
-/*form-containerの背景を薄いグレーにし、内側に20pxの余白をつける*/
-/*フォーム全体の幅を600pxに制限し、中央に配置*/
-/*項目名をBoldにし、24pxに*/
-/*項目名と入力欄の余白を6px、2項目を一行で表示する*/
-/*メンバー数、曲数プルダウンは大きく*/
-/*入力欄は1行入力、10文字分の幅、枠線は薄いグレー、角を少し丸く、内側に余白を5px*/
-/*出力ボタンは水色背景に白文字、ホバーで文字色と背景色が反転し、背景色と同じ枠線をつける、0.3秒かけてアニメ、ボタンサイズをやや大きく*/
-/*googleフォーム風のスタイルを適用*/
-/*曲名、各要望は一列に並べる*/
-/*出力ボタンと曲名、要望の間に余白を追加*/
-/*各項目との境界に薄いグレーの線を追加*/
-/*バンド名、メンバー数、曲数、各メンバー詳細、各曲詳細の各セクションの間に薄いグレーの線を追加*/
-/*p項目とinput項目の余白は3px*/
-/*プルダウンの枠線は薄いグレー、角を丸める*/
-/*出力ボタンを中央に配置*/
-/*ホバー時に影を追加*/
-/*active時に押下感を追加*/
-/*サイトアクセス時にbodyをしたから上に0.5秒かけて表示*/
-/*備考欄の縁を薄いグレーに、角を丸く、内側に5pxの余白をつける*/
+/* アニメーション定義 */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -28,145 +9,145 @@
         transform: translateY(0);
     }
 }
+
+/* 全体設定 */
 body {
     background-color: #ffffff;
     text-align: left;
-    font-family: yu Gothic, sans-serif;
-    animation: fadeInUp 1s ease;
-    
-    user-select: none;        
-}
-p{
-    font-weight: bold;
-}
-#form_container {
-    background-color: #f5f5f5;
-    padding: 20px;
-    width: 600px;
-    margin: 0 auto;
-}
-h1 {
-    font-weight: bold;
-    font-size: 24px;
-}
-div {
-    margin-bottom: 12px;
-}
-label {
-    font-weight: bold;
-    display: inline-block;
-    width: 150px;
-    margin-right: 6px;
-}
-select {
-    font-size: 12px;
-    padding: 6px;
-}
-input[type="text"] {
-    width: 200px;
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    padding: 5px;
-}
-button {
-    background-color: #1e90ff;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-button:hover {
-    background-color: #ffffff;
-    color: #1e90ff;
-    border: 1px solid #1e90ff;
-}
-input[type="text"], select {
-    display: block;
-    margin-bottom: 8px;
-}
-#exportBtn {
-    margin-top: 20px;
-    border-radius: 4px;
-}
-#band_member_details div, #song_details div {
-    margin-bottom: 8px;
-    border-bottom: 1px solid #802929;
-    padding-bottom: 8px;
-}
-#output_button {
-    margin-top: 20px;
-    text-align: center;
-}
-p, input[type="text"], select {
-    margin-bottom: 3px;
-}
-#band_name_section, #band_member_section,  #song_section, #band_member_details div, #song_details div {
-    border-bottom: 1px solid #d3d3d3;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
-}
-select {
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-}
-#exportBtn {
-    display: block;
-    margin: 20px auto 0 auto;
-}
-button:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-button:active {
-    transform: translateY(4px);
-    
-
-#remarks {
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    padding: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
-}
-
-/*スマホ対応*/
-@media (max-width: 640px) {
-    #form_container {
-        width: 90%;
-        padding: 10px;
-    }
-    label {
-        width: 100%;
-        margin-bottom: 4px;
-    }
-    input[type="text"], select {
-        width: 100%;
-    }
-}
-    box-shadow: none;
-}
-/*レスポンシブ対応：各種入力項目を画面幅に合わせて調整*/
-/*スマホ表示時にフォーム幅を90%に調整、ラベルと入力欄を縦並び、ピンチインアウト不可にして、ズーム不可に*/
-@media (max-width: 640px) {
-    #form_container {
-        width: 90%;
-        padding: 10px;
-    }
-    label {
-        width: 100%;
-        margin-bottom: 4px;
-    }
-    input[type="text"], select {
-        width: 100%;
-    }
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    animation: fadeInUp 0.5s ease; /* 0.5秒かけて表示 */
+    user-select: none;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-  /* ズームやダブルタップによる拡大を禁止 */
-  touch-action: pan-x pan-y;
+    touch-action: pan-x pan-y; /* ズーム防止 */
 }
 
+/* メインコンテナ */
+#form_container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 600px; /* PCでの幅制限 */
+    margin: 20px auto;
+    box-sizing: border-box;
+}
 
+h1 {
+    font-weight: bold;
+    font-size: 24px;
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 10px;
+}
 
+/* 各セクションを独立したカード（タブ）のように囲む */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px; /* カード間の余白 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 軽い影 */
+}
+
+/* 項目名（Bold, 24px相当だが、見出しとして調整） */
+h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+p {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+/* フォームのグループ設定 */
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* 入力欄の共通スタイル */
+input[type="text"], select, textarea {
+    width: 100%; /* 基本はフル幅 */
+    max-width: 300px; /* 10文字分程度の幅を確保 */
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 3px;
+    font-size: 16px; /* スマホでズームされないための最小サイズ */
+    box-sizing: border-box;
+}
+
+/* プルダウンは大きく */
+select {
+    font-size: 16px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* 備考欄 */
+#remarks {
+    max-width: 100%;
+    height: 100px;
+    resize: vertical;
+}
+
+/* ラジオボタンの横並び */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    width: auto; /* ラベルの幅を自動に */
+    font-weight: normal;
+}
+
+/* 出力ボタン */
+#exportBtn {
+    display: block;
+    margin: 30px auto;
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: 1px solid #1e90ff;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 0.3秒かけてアニメ */
+}
+
+#exportBtn:hover {
+    background-color: #ffffff;
+    color: #1e90ff;
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+#exportBtn:active {
+    transform: translateY(4px); /* 押下感 */
+}
+
+/* レスポンス対応・スマホ */
+@media (max-width: 640px) {
+    #form_container {
+        width: 95%;
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    input[type="text"], select {
+        max-width: 100%; /* スマホでは全幅 */
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}
