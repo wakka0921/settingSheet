@@ -1,494 +1,286 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>セット図作成フォーム</title>
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-    <!-- 追加: xlsx-populate (ブラウザ版 CDN) -->
     <script src="https://unpkg.com/xlsx-populate/browser/xlsx-populate.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="script" href="script.js">
 </head>
 <body>
-<div id="form_container">    
+<div id="form_container" class="container">    
     <h1>セット図作成フォーム</h1>
 
-    <div id="band_name">
-        <p>バンド名</p>
-        <input type="text" id="bName" placeholder="バンド名を入力" >
-    </div>
-    <div id="band_hurigana">
-        <p>フリガナ</p>
-        <input type="text" id="bHurigana" placeholder="フリガナを入力">
-    </div>
-    <div id="band_janru">
-        <p>ジャンル</p>
-        <input type="text" id="bJanru" placeholder="ジャンルを入力">
-    </div>
-    <div id="band_member">
-        <p>メンバー</p>
-        <select id="bMember">
-            <option value="1">1人</option>
-            <option value="2">2人</option>
-            <option value="3">3人</option>
-            <option value="4">4人</option>
-            <option value="5">5人</option>
-            <option value="6">6人</option>
-    </select>
-    </div>
-<div id="band_member_details">
-    <div id="band_member_dtl_1" style="display:none;">
-        <p>メンバー1</p>
-        <input type="text" id="bMemberDtl1" placeholder="メンバー1の名前を入力">
-        <select id="bMemberRole1">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp1" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb1" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option>
-        </select>
-        <input type="checkbox" id="vocal" checked>ボーカル
-        <input type="checkbox" id="cho1">コーラス
-    </div>
-    <div id="band_member_dtl_2" style="display:none;">
-        <p>メンバー2</p>
-        <input type="text" id="bMemberDtl2" placeholder="メンバー2の名前を入力">
-        <select id="bMemberRole2">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp2" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb2" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option> 
-        </select>
-        <input type="checkbox" id="vocal2" checked>ボーカル
-        <input type="checkbox" id="cho2">コーラス
-    <div id="band_member_dtl_3" style="display:none;">
-        <p>メンバー3</p>
-        <input type="text" id="bMemberDtl3" placeholder="メンバー3の名前を入力">
-        <select id="bMemberRole3">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp3" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb3" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option>
-        </select>
-        <input type="checkbox" id="vocal3" checked>ボーカル
-        <input type="checkbox" id="cho3">コーラス
-    </div>
-    <div id="band_member_dtl_4" style="display:none;">
-        <p>メンバー4</p>
-        <input type="text" id="bMemberDtl4" placeholder="メンバー4の名前を入力">
-        <select id="bMemberRole4">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp4" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb4" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option>
-        </select>
-        <input type="checkbox" id="vocal4" checked>ボーカル
-        <input type="checkbox" id="cho4">コーラス
-    </div>
-    <div id="band_member_dtl_5" style="display:none;">
-        <p>メンバー5</p>
-        <input type="text" id="bMemberDtl5" placeholder="メンバー5の名前を入力">
-        <select id="bMemberRole5">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp5" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb5" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option>
-        </select>
-        <input type="checkbox" id="vocal5" checked>ボーカル
-        <input type="checkbox" id="cho5">コーラス
-    </div>
-    <div id="band_member_dtl_6" style="display:none;">
-        <p>メンバー6</p>
-        <input type="text" id="bMemberDtl6" placeholder="メンバー6の名前を入力">
-        <select id="bMemberRole6">
-            <option value="vo">ボーカル</option>
-            <option value="gt">ギター</option>
-            <option value="ba">ベース</option>
-            <option value="dr">ドラム</option>
-            <option value="key">キーボード</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberAmp6" style="display: none;">
-            <option value="marshall">マーシャル</option>
-            <option value="jc">JC</option>
-            <option value="other">その他</option>
-        </select>
-        <select id="bMemberTamb6" style="display: none;">
-            <option value="10inchtamb">10インチタム残し</option>
-            <option value="12inchtamb">12インチタム残し</option>
-            <option value="2tambs">2タム</option>
-        </select>
-        <input type="checkbox" id="vocal6" checked>ボーカル
-        <input type="checkbox" id="cho6">コーラス
-    </div>
-</div>
-    <div id="SE">
-        <p>SEの有無</p>
-        <input type="radio" name="se_exist" id="se_exist" value="yes" checked>あり
-        <input type="radio" name="se_exist" id="se_exist" value="no">なし
-        <div id="se_option">
-        <select id="toujou_houhou" style="display: none;">
-            <option value="板付き">板付き</option>
-            <option value="ハケ">ハケてから</option>
-        </select>
-        <select id="stop_houhou" style="display: none;">
-            <option value="手あげ">手上げて途中で切る</option>
-            <option value="流しきり">SE流し切り</option>
-        </select>
+    <div class="card">
+        <h3>バンド基本情報</h3>
+        <div class="form-group">
+            <label>バンド名</label>
+            <input type="text" id="bName" placeholder="バンド名を入力">
+        </div>
+        <div class="form-group">
+            <label>フリガナ</label>
+            <input type="text" id="bHurigana" placeholder="フリガナを入力">
+        </div>
+        <div class="form-group">
+            <label>ジャンル</label>
+            <input type="text" id="bJanru" placeholder="ジャンルを入力">
+        </div>
+        <div class="grid-container-2col">
+            <div class="form-group">
+                <label>メンバー人数 (3-6人)</label>
+                <select id="bMember"></select>
+            </div>
+            <div class="form-group">
+                <label>曲数 (3-10曲)</label>
+                <select id="sNumber"></select>
+            </div>
         </div>
     </div>
-    <script>
-        // SEの有無に応じて登場・ハケ方法選択欄を表示・非表示にする
-        document.getElementsByName('se_exist').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const toujouSelect = document.getElementById('toujou_houhou');
-                const stopSelect = document.getElementById('stop_houhou');
-                if (this.value === 'yes') {
-                    toujouSelect.style.display = 'inline';
-                    stopSelect.style.display = 'inline';
-                } else {
-                    toujouSelect.style.display = 'none';
-                    stopSelect.style.display = 'none';
-                }
-            });
-            // 初期表示時の設定
-            if (radio.checked) {
-                radio.dispatchEvent(new Event('change'));
-            }
-        });
-    </script>
-    <script>
-        // メンバー数に応じてメンバー詳細入力欄を表示・非表示にする
-        document.getElementById('bMember').addEventListener('change', function() {
-            const memberCount = parseInt(this.value);
-            for (let i = 1; i <= 6; i++) {
-                const memberDtlDiv = document.getElementById(`band_member_dtl_${i}`);
-                if (i <= memberCount) {
-                    memberDtlDiv.style.display = 'block';
-                } else {
-                    memberDtlDiv.style.display = 'none';
-                }
-            }
-        });
 
-        // 初期表示時にメンバー数に応じた詳細欄の表示設定
-        document.getElementById('bMember').dispatchEvent(new Event('change'));
-    </script>
+    <div id="band_member_details" class="grid-container"></div>
 
-    <script>
-        // メンバーの役割に応じてアンプ・タム選択欄を表示・非表示にする
-        function updateMemberRole(memberIndex) {
-            const roleSelect = document.getElementById(`bMemberRole${memberIndex}`);
-            const ampSelect = document.getElementById(`bMemberAmp${memberIndex}`);
-            const tambSelect = document.getElementById(`bMemberTamb${memberIndex}`);
+    <div class="card">
+        <h3>SEの有無</h3>
+        <div class="radio-group">
+            <label><input type="radio" name="se_exist" value="yes" checked> あり</label>
+            <label><input type="radio" name="se_exist" value="no"> なし</label>
+        </div>
+        <div id="se_option_area">
+            <div class="form-group">
+                <label>登場位置</label>
+                <select id="toujou_houhou">
+                    <option value="板付き">板付き</option>
+                    <option value="ハケ">ハケてから</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>曲止めタイミング</label>
+                <select id="stop_houhou">
+                    <option value="手あげ">手上げて途中で切る</option>
+                    <option value="流しきり">SE流し切り</option>
+                </select>
+            </div>
+        </div>
+    </div>
 
-            roleSelect.addEventListener('change', function() {
-                const selectedRole = this.value;
-                if (selectedRole === 'gt' ) {
-                    ampSelect.style.display = 'inline';
-                } else {
-                    ampSelect.style.display = 'none';
-                }
+    <div id="song_details" class="grid-container"></div>
 
-                if (selectedRole === 'dr') {
-                    tambSelect.style.display = 'inline';
-                } else {
-                    tambSelect.style.display = 'none';
-                }
-            });
-        }
+    <div class="card">
+        <h3>備考欄</h3>
+        <p class="note-text">
+            以下項目を書いてください：<br>
+            ・ギター2本の場合はどちらが上手か<br>
+            ・キーボードの位置
+        </p>
+        <textarea id="remarks" rows="4" placeholder="備考を入力"></textarea>
+    </div>
 
-        // 各メンバーの役割変更イベントを設定
-        for (let i = 1; i <= 6; i++) {
-            updateMemberRole(i);
-        }  
-    </script>
-    <div id="song_number">
-        <p>曲数</p>
-        <select id="sNumber">
-            <option value="1">1曲</option>
-            <option value="2">2曲</option>
-            <option value="3">3曲</option>
-            <option value="4">4曲</option>
-            <option value="5">5曲</option>
-            <option value="6">6曲</option>
-            <option value="7">7曲</option>
-            <option value="8">8曲</option>
-            <option value="9">9曲</option>
-            <option value="10">10曲</option>
-    </select>
+    <div class="btn-area">
+        <button id="exportBtn">セット図を作成</button>
     </div>
-<div id="song_details">
-    <div id="song_detail_1" style="display:none;">
-        <p>１曲目</p>
-        <input type="text" id="sDetail1" placeholder="１曲目のタイトルを入力">
-        <input type="text" id="onkyo_req1" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req1" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_2" style="display:none;">
-        <p>２曲目</p>
-        <input type="text" id="sDetail2" placeholder="２曲目のタイトルを入力">
-        <input type="text" id="onkyo_req2" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req2" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_3" style="display:none;">
-        <p>３曲目</p>
-        <input type="text" id="sDetail3" placeholder="３曲目のタイトルを入力">
-        <input type="text" id="onkyo_req3" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req3" placeholder="照明の要望を入力">  
-    </div>
-    <div id="song_detail_4" style="display:none;">
-        <p>４曲目</p>
-        <input type="text" id="sDetail4" placeholder="４曲目のタイトルを入力">
-        <input type="text" id="onkyo_req4" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req4" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_5" style="display:none;">
-        <p>５曲目</p>
-        <input type="text" id="sDetail5" placeholder="５曲目のタイトルを入力">
-        <input type="text" id="onkyo_req5" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req5" placeholder="照明の要望を入力">  
-    </div>
-    <div id="song_detail_6" style="display:none;">
-        <p>６曲目</p>
-        <input type="text" id="sDetail6" placeholder="６曲目のタイトルを入力">
-        <input type="text" id="onkyo_req6" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req6" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_7" style="display:none;">
-        <p>７曲目</p>
-        <input type="text" id="sDetail7" placeholder="７曲目のタイトルを入力">
-        <input type="text" id="onkyo_req7" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req7" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_8" style="display:none;">
-        <p>８曲目</p>
-        <input type="text" id="sDetail8" placeholder="８曲目のタイトルを入力">
-        <input type="text" id="onkyo_req8" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req8" placeholder="照明の要望を入力">
-    </div>
-    <div id="song_detail_9" style="display:none;">
-        <p>９曲目</p>
-        <input type="text" id="sDetail9" placeholder="９曲目のタイトルを入力">
-        <input type="text" id="onkyo_req9" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req9" placeholder="照明の要望を入力">  
-    </div>
-    <div id="song_detail_10" style="display:none;">
-        <p>１０曲目</p>
-        <input type="text" id="sDetail10" placeholder="１０曲目のタイトルを入力">
-        <input type="text" id="onkyo_req10" placeholder="音響の要望を入力">
-        <input type="text" id="shot_req10" placeholder="照明の要望を入力">
-    </div>
-    <p>備考欄（4人以上の場合、上手ギターの人、キーボの上下を必ず記入してください）</p>
-    <textarea id="remarks" rows="4" cols="50" placeholder="備考を入力"></textarea>
 </div>
-    <script>
-        // 曲数に応じて曲詳細入力欄を表示・非表示にする
-        document.getElementById('sNumber').addEventListener('change', function() {
-            const songCount = parseInt(this.value);
-            for (let i = 1; i <= 10; i++) {
-                const songDtlDiv = document.getElementById(`song_detail_${i}`);
-                if (i <= songCount) {
-                    songDtlDiv.style.display = 'block';
-                } else {
-                    songDtlDiv.style.display = 'none';
-                }
-            }
-        });
 
-        // 初期表示時に曲数に応じた詳細欄の表示設定
-        document.getElementById('sNumber').dispatchEvent(new Event('change'));
-    </script>
+<script>
+/**
+ * 1. 定数・設定
+ */
+const CONFIG = {
+    minMembers: 3, maxMembers: 6,
+    minSongs: 3, maxSongs: 10
+};
 
-    <button id="exportBtn" onclick="return handleButtonClick();">セット図を作成</button>
-    <script>
-        // xlsx-populate を使った書式保持版エクスポート
-// 「セット図を作成」ボタンのクリックイベント
-document.getElementById('exportBtn').addEventListener('click', async function () {
-    try {
-        // --- 1. 入力チェック (最初に行う) ---
-        // checkForm または validateForm が false を返したら処理を中断
-        if (!checkForm()) { 
-            return; 
-        }
- function checkForm() {
-    if (document.getElementById("bName").value === "") {
-        alert("バンド名は必須項目です。");
-        return false;
+/**
+ * 2. フォームの動的生成
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const memberSelect = document.getElementById('bMember');
+    const songSelect = document.getElementById('sNumber');
+
+    // 人数・曲数プルダウン生成
+    for(let i=CONFIG.minMembers; i<=CONFIG.maxMembers; i++) {
+        memberSelect.add(new Option(`${i}人`, i));
     }
-    if (document.getElementById("bHurigana").value === "") {
-        alert("フリガナは必須項目です。");
-        return false;
+    for(let i=CONFIG.minSongs; i<=CONFIG.maxSongs; i++) {
+        songSelect.add(new Option(`${i}曲`, i));
     }
 
-    if(document.getElementById("bMemberDtl1").value ==="" || document.getElementById("bMemberDtl2").value ==="" || document.getElementById("bMemberDtl3").value ===""){
-        alert("３人まで必ず入力してください。");
-        return false;
+    // イベント登録
+    memberSelect.addEventListener('change', renderMemberFields);
+    songSelect.addEventListener('change', renderSongFields);
+    document.getElementsByName('se_exist').forEach(r => r.addEventListener('change', toggleSE));
+
+    // 初期レンダリング
+    renderMemberFields();
+    renderSongFields();
+});
+
+// メンバー入力欄生成
+function renderMemberFields() {
+    const count = document.getElementById('bMember').value;
+    const container = document.getElementById('band_member_details');
+    container.innerHTML = '';
+
+    for(let i=1; i<=count; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <h3>メンバー ${i}</h3>
+            <div class="form-group">
+                <label>名前</label>
+                <input type="text" id="bMemberDtl${i}" placeholder="名前を入力">
+            </div>
+            <div class="form-group">
+                <label>担当パート</label>
+                <select id="bMemberRole${i}" onchange="toggleExtraFields(${i})">
+                    <option value="vo">ボーカル</option>
+                    <option value="gt">ギター</option>
+                    <option value="ba">ベース</option>
+                    <option value="dr">ドラム</option>
+                    <option value="key">キーボード</option>
+                    <option value="other">その他</option>
+                </select>
+            </div>
+            <div id="amp_area_${i}" class="extra-field" style="display:none;">
+                <label>使用アンプ</label>
+                <select id="bMemberAmp${i}">
+                    <option value="marshall">マーシャル</option>
+                    <option value="jc">JC</option>
+                    <option value="other">その他</option>
+                </select>
+            </div>
+            <div id="tamb_area_${i}" class="extra-field" style="display:none;">
+                <label>タムのセット</label>
+                <select id="bMemberTamb${i}">
+                    <option value="10inchtamb">10インチタム残し</option>
+                    <option value="12inchtamb">12インチタム残し</option>
+                    <option value="2tambs">2タム</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>役職（兼任）</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="role_type_${i}" value="vo" checked> ボーカル</label>
+                    <label><input type="radio" name="role_type_${i}" value="cho"> コーラス</label>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
     }
-    if(document.getElementById("sDetail1").value ==="" || document.getElementById("sDetail2").value ==="" || document.getElementById("sDetail3").value ===""){
-        alert("3曲目まで必須項目です。");
-        return false;
-    }
-    return true;    
 }
 
-        // --- 2. データの準備 ---
-        const resp = await fetch('セッティング図_bname.xlsx');
-        if (!resp.ok) throw new Error('テンプレートを取得できません。ローカルサーバーで配信してください。');
-        const arrayBuffer = await resp.arrayBuffer();
+// 曲入力欄生成
+function renderSongFields() {
+    const count = document.getElementById('sNumber').value;
+    const container = document.getElementById('song_details');
+    container.innerHTML = '';
 
+    for(let i=1; i<=count; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <h3>${i}曲目</h3>
+            <div class="form-group">
+                <label>曲名</label>
+                <input type="text" id="sDetail${i}" placeholder="タイトルを入力">
+            </div>
+            <div class="form-group">
+                <label>音響への要望</label>
+                <input type="text" id="onkyo_req${i}" placeholder="例：リバーブ深め">
+            </div>
+            <div class="form-group">
+                <label>照明への要望</label>
+                <input type="text" id="shot_req${i}" placeholder="例：サビで赤く">
+            </div>
+        `;
+        container.appendChild(card);
+    }
+}
+
+// 役割に応じた追加項目の表示制御
+function toggleExtraFields(index) {
+    const role = document.getElementById(`bMemberRole${index}`).value;
+    document.getElementById(`amp_area_${index}`).style.display = (role === 'gt') ? 'block' : 'none';
+    document.getElementById(`tamb_area_${index}`).style.display = (role === 'dr') ? 'block' : 'none';
+}
+
+// SEオプションの表示制御
+function toggleSE() {
+    const isYes = document.querySelector('input[name="se_exist"]:checked').value === 'yes';
+    document.getElementById('se_option_area').style.display = isYes ? 'block' : 'none';
+}
+
+/**
+ * 3. Excel出力ロジック
+ */
+document.getElementById('exportBtn').addEventListener('click', async () => {
+    // バリデーション
+    if (!validateForm()) return;
+
+    try {
+        const resp = await fetch('セッティング図_bname.xlsx');
+        if (!resp.ok) throw new Error('テンプレートが見つかりません。');
+        const arrayBuffer = await resp.arrayBuffer();
         const workbook = await XlsxPopulate.fromDataAsync(arrayBuffer);
         const sheet = workbook.sheet(0);
 
-        const getVal = id => (document.getElementById(id) ? document.getElementById(id).value : '');
-        const getChecked = id => (document.getElementById(id) ? document.getElementById(id).checked : false);
-        const vocalId = i => (i === 1 ? 'vocal' : `vocal${i}`);
-        const choId = i => `cho${i}`;
+        const getVal = id => document.getElementById(id)?.value || '';
 
-        // バンド名などの取得（DL時のファイル名でも使うので早めに定義）
-        const bandName = getVal('bName') || '';
-        const furigana = getVal('bHurigana') || '';
-        const genre = getVal('bJanru') || '';
-        if (bandName) sheet.cell('G4').value(bandName);
-        if (furigana) sheet.cell('H3').value(furigana);
-        if (genre) sheet.cell('N4').value(genre);
+        // 基本情報
+        const bandName = getVal('bName');
+        sheet.cell('G4').value(bandName);
+        sheet.cell('H3').value(getVal('bHurigana'));
+        sheet.cell('N4').value(getVal('bJanru'));
 
-        // --- 3. シートへの書き込み処理 (既存のロジック) ---
         // メンバー情報
-        const memberCount = parseInt(getVal('bMember') || '0', 10);
-        for (let i = 1; i <= memberCount; i++) {
-            const row = 10 + (i - 1);
-            const name = getVal(`bMemberDtl${i}`) || '';
-            let role = getVal(`bMemberRole${i}`) || '';
-            if (getChecked(vocalId(i))) role += (role ? '/' : '') + 'Vo';
-            if (getChecked(choId(i))) role += (role ? '/' : '') + 'Cho';
-            if (name) sheet.cell(`D${row}`).value(name);
-            if (role) sheet.cell(`C${row}`).value(role);
+        const mCount = document.getElementById('bMember').value;
+        for (let i = 1; i <= mCount; i++) {
+            const name = getVal(`bMemberDtl${i}`);
+            const roleBase = document.getElementById(`bMemberRole${i}`).value;
+            const roleSub = document.querySelector(`input[name="role_type_${i}"]:checked`).value;
+            const roleDisp = `${roleBase}/${roleSub === 'vo' ? 'Vo' : 'Cho'}`;
+            
+            sheet.cell(`D${9+i}`).value(name);
+            sheet.cell(`C${9+i}`).value(roleDisp);
         }
 
         // 曲情報
-        const songCount = parseInt(getVal('sNumber') || '0', 10);
-        for (let j = 1; j <= songCount; j++) {
-            const row = 23 + (j - 1);
-            const title = getVal(`sDetail${j}`) || '';
-            const onkyo = getVal(`onkyo_req${j}`) || '';
-            const shot = getVal(`shot_req${j}`) || '';
-            sheet.cell(`C${row}`).value(j);
-            if (title) sheet.cell(`D${row}`).value(title);
-            if (onkyo) sheet.cell(`K${row}`).value(onkyo);
-            if (shot) sheet.cell(`O${row}`).value(shot);
+        const sCount = document.getElementById('sNumber').value;
+        for (let j = 1; j <= sCount; j++) {
+            sheet.cell(`C${22+j}`).value(j);
+            sheet.cell(`D${22+j}`).value(getVal(`sDetail${j}`));
+            sheet.cell(`K${22+j}`).value(getVal(`onkyo_req${j}`));
+            sheet.cell(`O${22+j}`).value(getVal(`shot_req${j}`));
         }
 
-        // 備考・機材・SE情報 (省略せずそのまま記述)
-        const remarks = getVal('remarks') || '';
-        if (remarks) sheet.cell('Z11').value(remarks);
+        // 備考
+        sheet.cell('Z11').value(getVal('remarks'));
 
-        let ampTambRow = 5;
-        for (let i = 1; i <= memberCount; i++) {
-            const name = getVal(`bMemberDtl${i}`) || '';
-            const role = getVal(`bMemberRole${i}`) || '';
-            if (role === 'gt') {
-                const amp = getVal(`bMemberAmp${i}`) || '';
-                if (name && amp) { sheet.cell(`Z${ampTambRow}`).value(`${name}　使用アンプ：${amp}`); ampTambRow++; }
-            } else if (role === 'dr') {
-                const tamb = getVal(`bMemberTamb${i}`) || '';
-                if (name && tamb) { sheet.cell(`Z${ampTambRow}`).value(`${name}　タムセット：${tamb}`); ampTambRow++; }
-            }
-        }
-
-        const seExistElement = document.querySelector('input[name="se_exist"]:checked');
-        const seExist = seExistElement ? seExistElement.value : 'no';
-        if (seExist === 'yes') {
-            const toujou = getVal('toujou_houhou') || '';
-            const hake = getVal('stop_houhou') || '';
-            sheet.cell('Z20').value(`SEあり　登場：${toujou}　止め：${hake}`);
-        } else {
-            sheet.cell('Z20').value('SEなし');
-        }
-
-        // --- 4. 出力・ダウンロード ---
+        // ダウンロード処理
         const out = await workbook.outputAsync();
         const blob = new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        const safeName = (bandName || 'セット図').replace(/[\\\/:*?"<>|]/g, '_');
         a.href = url;
-        a.download = `セット図_${safeName}.xlsx`;
-        document.body.appendChild(a);
+        a.download = `セット図_${bandName || '作成'}.xlsx`;
         a.click();
-        a.remove();
         URL.revokeObjectURL(url);
-
-        alert('ダウンロードしたEXCELを自分まで送ってください');
+        alert('作成が完了しました。');
 
     } catch (err) {
-        console.error(err);
-        alert('エラーが発生しました: ' + (err.message || err));
+        alert('エラー: ' + err.message);
     }
 });
-    </script>
-    
-</div>
-    
+
+function validateForm() {
+    if (!document.getElementById('bName').value) { alert('バンド名を入力してください'); return false; }
+    // 3人/3曲までの名前・曲名入力チェック
+    for(let i=1; i<=3; i++) {
+        if(!document.getElementById(`bMemberDtl${i}`).value) { alert(`メンバー${i}の名前を入力してください`); return false; }
+        if(!document.getElementById(`sDetail${i}`).value) { alert(`${i}曲目のタイトルを入力してください`); return false; }
+    }
+    return true;
+}
+</script>
 </body>
 </html>
