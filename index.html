@@ -160,7 +160,8 @@ function renderMemberFields() {
             <div class="form-group">
                 <label>役職（兼任）</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="role_type_${i}" value="vo" checked> ボーカル</label>
+                    <label><input type="radio" name="role_type_${i}" value="none" checked> なし</label>
+                    <label><input type="radio" name="role_type_${i}" value="vo"> ボーカル</label>
                     <label><input type="radio" name="role_type_${i}" value="cho"> コーラス</label>
                 </div>
             </div>
@@ -238,7 +239,12 @@ document.getElementById('exportBtn').addEventListener('click', async () => {
             const name = getVal(`bMemberDtl${i}`);
             const roleBase = document.getElementById(`bMemberRole${i}`).value;
             const roleSub = document.querySelector(`input[name="role_type_${i}"]:checked`).value;
-            const roleDisp = `${roleBase}/${roleSub === 'vo' ? 'Vo' : 'Cho'}`;
+            
+            // 「なし(none)」以外の場合のみ兼任パートを表示
+            let roleDisp = roleBase;
+            if (roleSub !== 'none') {
+                roleDisp += `/${roleSub === 'vo' ? 'Vo' : 'Cho'}`;
+            }
             
             sheet.cell(`D${9+i}`).value(name);
             sheet.cell(`C${9+i}`).value(roleDisp);
